@@ -256,7 +256,7 @@ layout2.addLayout(wheel_container)
 layout1.addLayout(layout2)
 
 window.setLayout(layout1)
-window.show()
+# window.show()
 
 # --- Run ---
 sys.exit(app.exec_())

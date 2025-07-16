@@ -193,14 +193,9 @@ class RouletteGame(QWidget):
                 painter.setPen(text_color)
                 painter.drawText(QRectF(cx - 12, cy - 12, 24, 24), Qt.AlignCenter, str(i + 1))
 
-<<<<<<< HEAD
             painter.setBrush(QBrush(QColor("#72B01D")))
             painter.setPen(Qt.NoPen)
             painter.drawEllipse(self.rect().adjusted(100, 100, -100, -100))
-=======
-window.setLayout(layout1)
-# window.show()
->>>>>>> 8e870962515fe63c39dfaf0e84991247bbd593bb
 
         def start_spin(self, winning_slot):
             self.winning_slot = winning_slot

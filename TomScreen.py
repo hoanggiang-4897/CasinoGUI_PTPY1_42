@@ -204,8 +204,8 @@ class PlinkoGame(QWidget):
                 self.update_labels()
                 self.play_button.setVisible(True)
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    game = PlinkoGame()
-    game.show()
-    sys.exit(app.exec_())
+# if __name__ == "__main__":
+#     app = QApplication(sys.argv)
+#     game = PlinkoGame()
+#     game.show()
+#     sys.exit(app.exec_())

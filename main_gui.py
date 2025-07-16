@@ -1,36 +1,4 @@
-# from PyQt5.QtCore import Qt
-# from PyQt5.QtWidgets import *
-
-# app = QApplication([])
-# main_win = QWidget()
-
-# def button_func():
-#     print("button pressed")
-
-# #modify screen
-# main_win.setWindowTitle("Casino GUI")
-# main_win.resize(1000,1000)
-# main_win.move(200,0)
-
-
-# #create button
-# button_next = QPushButton('Generate')
-# button_next.setText("NEXT")
-# button_next.text()
-# button_next.clicked.connect(button_func)
-
-# #label
-
-
-# line = QVBoxLayout()
-# line.addWidget(button_next, alignment= Qt.AlignCenter)
-# main_win.setLayout(line)
-
-
-# main_win.show()
-# app.exec_()
-
-
+import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
         QApplication, QWidget, 
@@ -39,17 +7,16 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtGui import QIcon
 
 from TomScreen import PlinkoGame
-# from Vinhscreen import RouletteWheel
+from Vinhscreen import RouletteGame
 
 
 class FirstScreen(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Health Check")
+        self.setWindowTitle("Casino Game")
         self.resize(800, 500)
         self.create_widget()
         self.show()
-        self.next_screen()
     
     def create_widget(self):
         title1 = QLabel("Welcome to Casino game!")
@@ -57,14 +24,12 @@ class FirstScreen(QWidget):
         self.button_Plinko = QPushButton("", self)
         self.button_Plinko.setStyleSheet("background-image: url(Images/Plinko.png); border: none;") 
         self.button_Plinko.setFixedSize(250, 200)
-        self.button_Plinko.clicked.connect(self.ScreenPlinko) 
+        self.button_Plinko.clicked.connect(self.Switch_Plinko_Screen) 
         
-        
-
         self.button_Roulette = QPushButton("")
         self.button_Roulette.setStyleSheet("background-image: url(Images/Roulette.png); border: none;") 
         self.button_Roulette.setFixedSize(250, 200)
-        self.button_Plinko.clicked.connect(self.ScreenPlinko) 
+        self.button_Roulette.clicked.connect(self.Switch_Roulette_Screen) 
 
         #Create layout
         line1 = QHBoxLayout()
@@ -78,20 +43,21 @@ class FirstScreen(QWidget):
         main_line.addLayout(line2)
         main_line.addLayout(line3)
         self.setLayout(main_line)
-        
-    def ScreenPlinko(self):
+                
+    def Switch_Plinko_Screen(self):
         # print("start click")
         self.ScreenPlinko = PlinkoGame()
         self.ScreenPlinko.show()
         self.hide()
-        
-    def next_screen(self):     
-        self.button_Plinko.clicked.connect(self.ScreenPlinko) 
-                
-# Run application
-app = QApplication([])
 
-#Show and run the application
-main_win = FirstScreen()
-app.exec_()
+    def Switch_Roulette_Screen(self):
+        # print("start click")
+        self.RouletteScreen = RouletteGame()
+        self.RouletteScreen.show()
+        self.hide()
 
+    
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    main_win = FirstScreen()
+    sys.exit(app.exec_())

@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QColor, QFont, QPainter
+# from main_gui import *
 
 # Constants
 WIDTH, HEIGHT = 800, 600
@@ -77,6 +78,7 @@ class PlinkoGame(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Plinko Game - PyQt5")
+        self.setGeometry(550,100,0,0)
         self.scene = QGraphicsScene(0, 0, WIDTH, HEIGHT)
         self.scene.setBackgroundBrush(QColor(20, 20, 40))  # Blue background
         self.view = QGraphicsView(self.scene)
@@ -88,7 +90,7 @@ class PlinkoGame(QWidget):
         self.balls = []
         self.pegs = []
         self.total_winnings = 0
-
+        
         self.input = QLineEdit(str(self.bet_amount))
         self.balance_label = QLabel()
         self.bet_label = QLabel()
@@ -138,6 +140,10 @@ class PlinkoGame(QWidget):
         button_layout.addWidget(self.drop_button)
         button_layout.addWidget(self.play_button)
         layout.addLayout(button_layout)
+
+        #main screen button
+        self.button_mainScreen = QPushButton("Back to main screen")
+        layout.addWidget(self.button_mainScreen)
 
         self.setLayout(layout)
         self.update_labels()
@@ -203,6 +209,10 @@ class PlinkoGame(QWidget):
                 ball.winnings = 0
                 self.update_labels()
                 self.play_button.setVisible(True)
+
+    
+
+        
 
 # if __name__ == "__main__":
 #     app = QApplication(sys.argv)

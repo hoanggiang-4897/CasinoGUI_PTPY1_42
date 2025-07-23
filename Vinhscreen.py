@@ -112,13 +112,9 @@ class RouletteGame(QWidget):
         layout2.addLayout(wheel_container)
         layout1.addLayout(layout2)
 
-<<<<<<< HEAD
         #main screen button
         self.button_mainScreen = QPushButton("Back to main screen")
         layout1.addWidget(self.button_mainScreen)
-
-=======
->>>>>>> 0afe9672b24c5a7969dec88680a6cbf96263cf32
         self.setLayout(layout1)
 
     def process_bet(self):
@@ -222,13 +218,9 @@ class RouletteGame(QWidget):
                 self.parent.show_result()
 
 
-# --- Run the Game ---
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    game = RouletteGame()
-    game.show()
-<<<<<<< HEAD
-    sys.exit(app.exec_())
-=======
-    sys.exit(app.exec_())
->>>>>>> 0afe9672b24c5a7969dec88680a6cbf96263cf32
+# # --- Run the Game ---
+# if __name__ == "__main__":
+#     app = QApplication(sys.argv)
+#     game = RouletteGame()
+#     game.show()
+#     sys.exit(app.exec_())

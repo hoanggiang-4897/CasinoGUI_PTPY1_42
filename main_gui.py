@@ -13,11 +13,8 @@ from Vinhscreen import RouletteGame
 class MainScreen(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Casino Game")
-        self.resize(500, 500)
-        # self.setGeometry(200,0,0,0)
         self.create_widget()
-        # self.showFullScreen()
+        
 
         
     def create_widget(self):
@@ -48,42 +45,21 @@ class MainScreen(QWidget):
         main_line.addLayout(line2)
         main_line.addLayout(line3)
 
-        exit_lable = QLabel("Press ESC to exit full screen")
+        exit_lable = QLabel("Press ESC to exit")
         exit_lable.setAlignment(Qt.AlignCenter)
         main_line.addWidget(exit_lable)
         self.setLayout(main_line)
-                
-    # def Switch_Plinko_Screen(self):
-    #     # print("start click")
-    #     self.ScreenPlinko = PlinkoGame()
-    #     self.ScreenPlinko.show()
-    #     self.hide()
 
-
-    # def Switch_Roulette_Screen(self):
-    #     # print("start click")
-    #     self.RouletteScreen = RouletteGame()
-    #     self.RouletteScreen.show()
-    #     self.hide()
-
-
-    def keyPressEvent(self, event):
-        # Exit full screen on Escape key press
-        if event.key() == Qt.Key_Escape:
-            self.close()   
 
     
-    
-# if __name__ == "__main__":
-#     app = QApplication(sys.argv)
-#     main_win = MainScreen()
-#     main_win.show()
-#     sys.exit(app.exec_())
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.setWindowTitle("Casino Game")
+        self.resize(500, 500)
         self.stacked_widget = QStackedWidget()
         self.setCentralWidget(self.stacked_widget)
         self.setGeometry(100, 100, 600, 400)
@@ -102,9 +78,14 @@ class MainWindow(QMainWindow):
         self.screen1.button_mainScreen.clicked.connect(lambda: self.stacked_widget.setCurrentWidget(self.Main_Screen))
         self.screen2.button_mainScreen.clicked.connect(lambda: self.stacked_widget.setCurrentWidget(self.Main_Screen))
 
-    
+    def keyPressEvent(self, event):
+        # Exit full screen on Escape key press
+        if event.key() == Qt.Key_Escape:
+            self.close()   
+
 if __name__ == "__main__":
     app = QApplication([])
     window = MainWindow()
-    window.show()
+    # window.show()
+    window.showFullScreen()
     app.exec_()
